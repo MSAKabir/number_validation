@@ -167,7 +167,7 @@ def bulk_verify():
                 result = verify_number(raw_number,NUMVERIFY_API_KEY)
                 rk = list(result.keys())
                 validation_results[raw_number] = result
-                print(list(result.keys())[0])
+
                 validation_data.append([
                     raw_number,
                     "✔️Valid" if result and result[rk[0]] else "❌Invalid" ,
@@ -178,7 +178,7 @@ def bulk_verify():
                     result[rk[5]] if result and result[rk[0]] else "N/A" ,
                     result[rk[6]] if result and result[rk[0]] else "N/A"
                 ])
-                time.sleep(1)
+                time.sleep(0.3)
             result_df = pd.DataFrame(validation_data, columns=[
                 "Phone Number", "Validation Result", "Local Format",
                 "Intl. Format", "Country", "Location", "Carrier", "Line Type"
